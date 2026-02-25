@@ -18,7 +18,7 @@ app.UseOpenApi();
 app.UseSwaggerUi();
 app.MapControllers();
 
-app.GenerateApiClientsFromOpenApi("../client/src/generated-ts-client.ts", "./openapi.json").GetAwaiter().GetResult();
+app.GenerateApiClientsFromOpenApi("../../client/src/generated-ts-client.ts", "./openapi.json").GetAwaiter().GetResult();
 
 var mqtt = app.Services.GetRequiredService<IMqttClientService>();
 await mqtt.ConnectAsync("broker.hivemq.com", 1883);
