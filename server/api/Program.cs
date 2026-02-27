@@ -1,19 +1,18 @@
+using api.AppOptions;
 using dotenv.net;
 using Infrastructure.Postgres.Scaffolding;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mqtt.Controllers;
 using server;
 
 var builder = WebApplication.CreateBuilder(args);
 
-DotEnv.Load();
-var dbConnectionString = 
-    Environment.GetEnvironmentVariable("CONN_STR");
+var appOptions = builder.Services.AddAppOptions(builder.Configuration);
 
 builder.Services.AddDbContext<MyDbContext>(conf =>
-{
-    conf.UseNpgsql(dbConnectionString);
-});
+{ conf.UseNpgsql(appOptions.DbConnectionString); });
+
 builder.Services.AddMqttControllers();
 builder.Services.AddControllers();
 builder.Services.AddOpenApiDocument();
