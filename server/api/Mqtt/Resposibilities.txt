@@ -1,0 +1,8 @@
+﻿
+Subscribe to:
+- farm/+/windmill/+/telemetry
+- farm/+/windmill/+/alert
+
+Deserialize JSON
+
+Forward to Services
