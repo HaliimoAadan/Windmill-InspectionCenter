@@ -1,4 +1,6 @@
+using System.Reflection;
 using api.AppOptions;
+using api.Services.Implementations;
 using dotenv.net;
 using Infrastructure.Postgres.Scaffolding;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +19,17 @@ builder.Services.AddMqttControllers();
 builder.Services.AddControllers();
 builder.Services.AddOpenApiDocument();
 builder.Services.AddCors();
+
+// Add Scoped all Services in api/Services/Implementations
+var interfaceAssembly = Assembly.GetExecutingAssembly();
+var serviceTypes = interfaceAssembly.GetTypes()
+    .Where(t => t.IsClass && !t.IsAbstract && t.Namespace == "api.Services.Implementations");
+foreach (var implementation in serviceTypes)
+{
+    var iface = implementation.GetInterfaces().FirstOrDefault();
+    if (iface != null)
+        builder.Services.AddScoped(iface, implementation);
+}
 
 var app = builder.Build();
 app.UseCors(c =>

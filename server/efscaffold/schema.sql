@@ -8,13 +8,13 @@ create table windmill_inspection_center.farm(
 
 create table windmill_inspection_center.turbine(
     id text primary key,
-    farm_id text not null references farm(id),
+    farm_id text not null references windmill_inspection_center.farm(id),
     name text not null
 );
 
 create table windmill_inspection_center.telemetry(
-    id bigserial primary key,
-    turbine_id text not null references turbine(id),
+    id text primary key,
+    turbine_id text not null references windmill_inspection_center.turbine(id),
     timestamp timestamptz not null,
 
     wind_speed real,
@@ -33,8 +33,8 @@ create table windmill_inspection_center.telemetry(
 create index on windmill_inspection_center.telemetry(turbine_id, timestamp desc);
 
 create table windmill_inspection_center.alert(
-    id bigserial primary key,
-    turbine_id text not null references turbine(id),
+    id text primary key,
+    turbine_id text not null references windmill_inspection_center.turbine(id),
     timestamp timestamptz not null,
     severity text check (severity in ('info', 'warning', 'critical')),
     message text not null
@@ -43,16 +43,16 @@ create table windmill_inspection_center.alert(
 create index on windmill_inspection_center.alert(turbine_id, timestamp desc);
 
 create table windmill_inspection_center.operator(
-    id uuid primary key,
+    id text primary key,
     username text not null,
     email text not null,
     password_hash text not null
 );
 
 create table windmill_inspection_center.command(
-    id bigserial primary key,
-    turbine_id text not null references turbine(id),
-    operator_id uuid not null references operator(id),
+    id text primary key,
+    turbine_id text not null references windmill_inspection_center.turbine(id),
+    operator_id text not null references windmill_inspection_center.operator(id),
     timestamp timestamptz not null,
 
     action text not null check (action in ('start', 'stop', 'setInterval', 'setPitch')),

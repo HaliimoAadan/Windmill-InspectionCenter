@@ -88,9 +88,7 @@ public partial class MyDbContext : DbContext
 
             entity.ToTable("operator", "windmill_inspection_center");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Email).HasColumnName("email");
             entity.Property(e => e.PasswordHash).HasColumnName("password_hash");
             entity.Property(e => e.Username).HasColumnName("username");

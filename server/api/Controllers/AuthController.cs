@@ -1,4 +1,4 @@
-﻿namespace server.Controllers;
+﻿namespace api.Controllers;
 
 // POST /login
 

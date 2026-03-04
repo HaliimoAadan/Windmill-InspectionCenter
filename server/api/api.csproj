@@ -22,8 +22,4 @@
     <ProjectReference Include="..\efscaffold\efscaffold.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
 </Project>

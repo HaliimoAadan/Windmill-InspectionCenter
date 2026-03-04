@@ -5,11 +5,11 @@ namespace efscaffold.Entities;
 
 public partial class Command
 {
-    public long Id { get; set; }
+    public string Id { get; set; } = null!;
 
     public string TurbineId { get; set; } = null!;
 
-    public Guid OperatorId { get; set; }
+    public string OperatorId { get; set; } = null!;
 
     public DateTime Timestamp { get; set; }
 

@@ -5,5 +5,1514 @@
     "title": "My Title",
     "version": "1.0.0"
   },
-  "components": {}
+  "paths": {
+    "/api/Command/GetAllCommands": {
+      "get": {
+        "tags": [
+          "Command"
+        ],
+        "operationId": "Command_GetAllCommands",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommandDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Command/CreateCommand": {
+      "post": {
+        "tags": [
+          "Command"
+        ],
+        "operationId": "Command_CreateCommand",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCommandRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Command/UpdateCommand": {
+      "put": {
+        "tags": [
+          "Command"
+        ],
+        "operationId": "Command_UpdateCommand",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCommandRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Command/DeleteCommand": {
+      "get": {
+        "tags": [
+          "Command"
+        ],
+        "operationId": "Command_DeleteCommandGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Command/{id}": {
+      "delete": {
+        "tags": [
+          "Command"
+        ],
+        "operationId": "Command_DeleteCommandDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Operator/GetAllOperators": {
+      "get": {
+        "tags": [
+          "Operator"
+        ],
+        "operationId": "Operator_GetAllOperators",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OperatorDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Operator/CreateOperator": {
+      "post": {
+        "tags": [
+          "Operator"
+        ],
+        "operationId": "Operator_CreateOperator",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOperatorRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Operator/UpdateOperator": {
+      "put": {
+        "tags": [
+          "Operator"
+        ],
+        "operationId": "Operator_UpdateOperator",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOperatorRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Operator/DeleteOperator": {
+      "get": {
+        "tags": [
+          "Operator"
+        ],
+        "operationId": "Operator_DeleteOperatorGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Operator/{id}": {
+      "delete": {
+        "tags": [
+          "Operator"
+        ],
+        "operationId": "Operator_DeleteOperatorDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OperatorDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alert/GetAllAlerts": {
+      "get": {
+        "tags": [
+          "Alert"
+        ],
+        "operationId": "Alert_GetAllAlerts",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AlertDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alert/CreateAlert": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "operationId": "Alert_CreateAlert",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAlertRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alert/UpdateAlert": {
+      "put": {
+        "tags": [
+          "Alert"
+        ],
+        "operationId": "Alert_UpdateAlert",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAlertRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alert/DeleteAlert": {
+      "get": {
+        "tags": [
+          "Alert"
+        ],
+        "operationId": "Alert_DeleteAlertGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alert/{id}": {
+      "delete": {
+        "tags": [
+          "Alert"
+        ],
+        "operationId": "Alert_DeleteAlertDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Farm/GetAllFarms": {
+      "get": {
+        "tags": [
+          "Farm"
+        ],
+        "operationId": "Farm_GetAllFarms",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FarmDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Farm/CreateFarm": {
+      "post": {
+        "tags": [
+          "Farm"
+        ],
+        "operationId": "Farm_CreateFarm",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFarmRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FarmDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Farm/UpdateFarm": {
+      "put": {
+        "tags": [
+          "Farm"
+        ],
+        "operationId": "Farm_UpdateFarm",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFarmRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FarmDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Farm/DeleteFarm": {
+      "get": {
+        "tags": [
+          "Farm"
+        ],
+        "operationId": "Farm_DeleteFarmGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FarmDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Farm/{id}": {
+      "delete": {
+        "tags": [
+          "Farm"
+        ],
+        "operationId": "Farm_DeleteFarmDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FarmDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Telemetry/GetAllTelemetries": {
+      "get": {
+        "tags": [
+          "Telemetry"
+        ],
+        "operationId": "Telemetry_GetAllTelemetries",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TelemetryDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/telemetry/turbineId={turbineId}": {
+      "get": {
+        "tags": [
+          "Telemetry"
+        ],
+        "operationId": "Telemetry_GetTelemetryByTurbineId",
+        "parameters": [
+          {
+            "name": "turbineId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelemetryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Telemetry/CreateTelemetry": {
+      "post": {
+        "tags": [
+          "Telemetry"
+        ],
+        "operationId": "Telemetry_CreateTelemetry",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTelemetryRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelemetryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Telemetry/UpdateTelemetry": {
+      "put": {
+        "tags": [
+          "Telemetry"
+        ],
+        "operationId": "Telemetry_UpdateTelemetry",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTelemetryRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelemetryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Telemetry/DeleteTelemetry": {
+      "get": {
+        "tags": [
+          "Telemetry"
+        ],
+        "operationId": "Telemetry_DeleteTelemetryGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelemetryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Telemetry/{id}": {
+      "delete": {
+        "tags": [
+          "Telemetry"
+        ],
+        "operationId": "Telemetry_DeleteTelemetryDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TelemetryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Turbine/GetAllTurbines": {
+      "get": {
+        "tags": [
+          "Turbine"
+        ],
+        "operationId": "Turbine_GetAllTurbines",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TurbineDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Turbine/CreateTurbine": {
+      "post": {
+        "tags": [
+          "Turbine"
+        ],
+        "operationId": "Turbine_CreateTurbine",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTurbineRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurbineDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Turbine/UpdateTurbine": {
+      "put": {
+        "tags": [
+          "Turbine"
+        ],
+        "operationId": "Turbine_UpdateTurbine",
+        "requestBody": {
+          "x-name": "dto",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTurbineRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurbineDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Turbine/DeleteTurbine": {
+      "get": {
+        "tags": [
+          "Turbine"
+        ],
+        "operationId": "Turbine_DeleteTurbineGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurbineDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Turbine/{id}": {
+      "delete": {
+        "tags": [
+          "Turbine"
+        ],
+        "operationId": "Turbine_DeleteTurbineDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TurbineDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CommandDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "turbineId": {
+            "type": "string"
+          },
+          "operatorId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "action": {
+            "type": "string"
+          },
+          "intervalSeconds": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pitchAngle": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CreateCommandRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "UpdateCommandRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "commandId"
+        ],
+        "properties": {
+          "commandId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "intervalSeconds": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pitchAngle": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "OperatorDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "passwordHash": {
+            "type": "string"
+          },
+          "commandsIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CreateOperatorRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "username": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "UpdateOperatorRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "operatorId"
+        ],
+        "properties": {
+          "operatorId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "AlertDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "turbineId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "severity": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateAlertRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "severity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "UpdateAlertRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "alertId"
+        ],
+        "properties": {
+          "alertId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "severity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "FarmDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "turbinesIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CreateFarmRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "UpdateFarmRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "farmId"
+        ],
+        "properties": {
+          "farmId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "turbinesIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "TelemetryDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "turbineId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "windSpeed": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "windDirection": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ambientTemperature": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "rotorSpeed": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "powerOutput": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "nacelleDirection": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "bladePitch": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "generatorTemp": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "gearboxTemp": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "vibration": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CreateTelemetryRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "turbineId",
+          "farmId"
+        ],
+        "properties": {
+          "turbineId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "farmId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "windSpeed": {
+            "type": "number",
+            "format": "float"
+          },
+          "windDirection": {
+            "type": "number",
+            "format": "float"
+          },
+          "ambientTemperature": {
+            "type": "number",
+            "format": "float"
+          },
+          "rotorSpeed": {
+            "type": "number",
+            "format": "float"
+          },
+          "powerOutput": {
+            "type": "number",
+            "format": "float"
+          },
+          "nacelleDirection": {
+            "type": "number",
+            "format": "float"
+          },
+          "bladePitch": {
+            "type": "number",
+            "format": "float"
+          },
+          "generatorTemp": {
+            "type": "number",
+            "format": "float"
+          },
+          "gearboxTemp": {
+            "type": "number",
+            "format": "float"
+          },
+          "vibration": {
+            "type": "number",
+            "format": "float"
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "UpdateTelemetryRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "telemetryId",
+          "turbineId",
+          "farmId"
+        ],
+        "properties": {
+          "telemetryId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "turbineId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "farmId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "windSpeed": {
+            "type": "number",
+            "format": "float"
+          },
+          "windDirection": {
+            "type": "number",
+            "format": "float"
+          },
+          "ambientTemperature": {
+            "type": "number",
+            "format": "float"
+          },
+          "rotorSpeed": {
+            "type": "number",
+            "format": "float"
+          },
+          "powerOutput": {
+            "type": "number",
+            "format": "float"
+          },
+          "nacelleDirection": {
+            "type": "number",
+            "format": "float"
+          },
+          "bladePitch": {
+            "type": "number",
+            "format": "float"
+          },
+          "generatorTemp": {
+            "type": "number",
+            "format": "float"
+          },
+          "gearboxTemp": {
+            "type": "number",
+            "format": "float"
+          },
+          "vibration": {
+            "type": "number",
+            "format": "float"
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "TurbineDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "farmId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "alertsIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "commandsIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "telemetriesIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CreateTurbineRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "farmId"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "farmId": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "UpdateTurbineRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "turbineId"
+        ],
+        "properties": {
+          "turbineId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "farmId": {
+            "type": "string"
+          },
+          "alertsIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "commandsIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "telemetriesIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
 }

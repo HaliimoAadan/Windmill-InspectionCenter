@@ -5,7 +5,7 @@ namespace efscaffold.Entities;
 
 public partial class Telemetry
 {
-    public long Id { get; set; }
+    public string Id { get; set; } = null!;
 
     public string TurbineId { get; set; } = null!;
 
