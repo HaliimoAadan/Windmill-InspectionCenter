@@ -8,6 +8,8 @@ public record CreateAlertRequestDto
     public string Severity { get; set; }
     [MinLength(1)]
     public string Message { get; set; }
+    [MinLength(1)]
+    public string TurbineId { get; set; }
 }
 
 public record UpdateAlertRequestDto

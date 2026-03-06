@@ -105,6 +105,7 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.AmbientTemperature).HasColumnName("ambient_temperature");
             entity.Property(e => e.BladePitch).HasColumnName("blade_pitch");
+            entity.Property(e => e.FarmId).HasColumnName("farm_id");
             entity.Property(e => e.GearboxTemp).HasColumnName("gearbox_temp");
             entity.Property(e => e.GeneratorTemp).HasColumnName("generator_temp");
             entity.Property(e => e.NacelleDirection).HasColumnName("nacelle_direction");
@@ -116,6 +117,11 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.Vibration).HasColumnName("vibration");
             entity.Property(e => e.WindDirection).HasColumnName("wind_direction");
             entity.Property(e => e.WindSpeed).HasColumnName("wind_speed");
+
+            entity.HasOne(d => d.Farm).WithMany(p => p.Telemetries)
+                .HasForeignKey(d => d.FarmId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("telemetry_farm_id_fkey");
 
             entity.HasOne(d => d.Turbine).WithMany(p => p.Telemetries)
                 .HasForeignKey(d => d.TurbineId)

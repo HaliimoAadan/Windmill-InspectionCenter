@@ -1,28 +1,51 @@
-﻿using api.Services.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
+using api.Services.Interfaces;
+using efscaffold.Entities;
+using Infrastructure.Postgres.Scaffolding;
+using Microsoft.EntityFrameworkCore;
 using server.Dtos;
 using server.Dtos.Requests;
 
 namespace api.Services.Implementations;
 
-public class OperatorService : IOperatorService
+public class OperatorService(MyDbContext ctx) : IOperatorService
 {
     public Task<List<OperatorDto>> GetAllOperators()
     {
-        throw new NotImplementedException();
+        return ctx.Operators.Select(o => new OperatorDto(o)).ToListAsync();
     }
 
-    public Task<OperatorDto> CreateOperator(CreateOperatorRequestDto dto)
+    public async Task<OperatorDto> CreateOperator(CreateOperatorRequestDto dto)
     {
-        throw new NotImplementedException();
+        var op = new Operator()
+        {
+            Id = Guid.NewGuid().ToString(),
+            Username = dto.Username,
+            Email = dto.Email,
+            // Hashing Service
+            PasswordHash = dto.Password
+        };
+        ctx.Operators.Add(op);
+        await ctx.SaveChangesAsync();
+        return new OperatorDto(op);    }
+
+    public async Task<OperatorDto> UpdateOperator(UpdateOperatorRequestDto dto)
+    {
+        Validator.ValidateObject(dto, new ValidationContext(dto));
+        var op = await ctx.Operators.FirstAsync(o => o.Id == dto.OperatorId);
+        op.Username = dto.Username;
+        op.Email = dto.Email;
+        // Hashing Service
+        op.PasswordHash = dto.Password;
+        await ctx.SaveChangesAsync();
+        return new OperatorDto(op);
     }
 
-    public Task<OperatorDto> UpdateOperator(UpdateOperatorRequestDto dto)
+    public async Task<OperatorDto> DeleteOperator(string id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<OperatorDto> DeleteOperator(string id)
-    {
-        throw new NotImplementedException();
+        var op = await ctx.Operators.FirstAsync(o => o.Id == id);
+        ctx.Operators.Remove(op);
+        await ctx.SaveChangesAsync();
+        return new OperatorDto(op);
     }
 }

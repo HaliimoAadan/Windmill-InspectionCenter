@@ -1,4 +1,6 @@
-﻿using api.Services.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
+using api.Services.Interfaces;
+using efscaffold.Entities;
 using Infrastructure.Postgres.Scaffolding;
 using Microsoft.EntityFrameworkCore;
 using server.Dtos;
@@ -15,18 +17,37 @@ public class AlertService(MyDbContext ctx) : IAlertService
 
  }
 
- public Task<AlertDto> CreateAlert(CreateAlertRequestDto dto)
+ public async Task<AlertDto> CreateAlert(CreateAlertRequestDto dto)
  {
-  throw new NotImplementedException();
+  var alert = new Alert()
+  {
+   Id = Guid.NewGuid().ToString(),
+   Message = dto.Message,
+   Severity = dto.Severity,
+   Timestamp = DateTime.UtcNow,
+   TurbineId = dto.TurbineId,
+   Turbine = ctx.Turbines.FirstOrDefault(t => t.Id == dto.TurbineId)
+  };
+  ctx.Alerts.Add(alert);
+  await ctx.SaveChangesAsync();
+  return new AlertDto(alert);
  }
 
- public Task<AlertDto> UpdateAlert(UpdateAlertRequestDto dto)
- {
-  throw new NotImplementedException();
+ public async Task<AlertDto> UpdateAlert(UpdateAlertRequestDto dto)
+ { 
+  Validator.ValidateObject(dto, new ValidationContext(dto)); 
+  var alert = await ctx.Alerts.FirstAsync(a => a.Id == dto.AlertId); 
+  alert.Severity = dto.Severity; 
+  alert.Message = dto.Message;
+  await ctx.SaveChangesAsync();
+  return new AlertDto(alert);
  }
 
- public Task<AlertDto> DeleteAlert(string id)
+ public async Task<AlertDto> DeleteAlert(string id)
  {
-  throw new NotImplementedException();
+  var alert = await ctx.Alerts.FirstAsync(a => a.Id == id);
+  ctx.Alerts.Remove(alert);
+  await ctx.SaveChangesAsync();
+  return new AlertDto(alert);
  }
 }

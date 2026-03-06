@@ -9,5 +9,6 @@ public partial class Farm
 
     public string Name { get; set; } = null!;
 
+    public virtual ICollection<Telemetry> Telemetries { get; set; } = new List<Telemetry>();
     public virtual ICollection<Turbine> Turbines { get; set; } = new List<Turbine>();
 }

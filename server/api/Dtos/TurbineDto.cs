@@ -8,7 +8,7 @@ public class TurbineDto
     public TurbineDto(Turbine turbine)
     {
         Id = turbine.Id;
-        FarmId = turbine.Farm.Id;
+        FarmId = turbine.FarmId;
         Name = turbine.Name;
         AlertsIds = turbine.Alerts.Select(a => a.Id).ToList();
         CommandsIds = turbine.Commands.Select(c => c.Id).ToList();

@@ -1,4 +1,6 @@
-﻿using api.Services.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
+using api.Services.Interfaces;
+using efscaffold.Entities;
 using Infrastructure.Postgres.Scaffolding;
 using server.Dtos;
 using server.Dtos.Requests;
@@ -14,18 +16,42 @@ public class CommandService(MyDbContext ctx) : ICommandService
         return ctx.Commands.Select(c => new CommandDto(c)).ToListAsync();
     }
 
-    public Task<CommandDto> CreateCommand(CreateCommandRequestDto dto)
+    public async Task<CommandDto> CreateCommand(CreateCommandRequestDto dto)
     {
-        throw new NotImplementedException();
+        var command = new Command()
+        {
+            Id = Guid.NewGuid().ToString(),
+            TurbineId = dto.TurbineId,
+            Timestamp = DateTime.UtcNow,
+            Action = dto.Action, // "start", "stop", "setInterval", "setPitch""
+            IntervalSeconds = dto.IntervalSeconds, // Only for "setInterval"
+            PitchAngle = dto.PitchAngle, // Only for "setPitchAngle"
+            Reason = dto.Reason // Only for "stop"
+        };
+        ctx.Commands.Add(command);
+        await ctx.SaveChangesAsync();
+        return new CommandDto(command);
+
     }
 
-    public Task<CommandDto> UpdateCommand(UpdateCommandRequestDto dto)
+    public async Task<CommandDto> UpdateCommand(UpdateCommandRequestDto dto)
     {
-        throw new NotImplementedException();
-    }
+        Validator.ValidateObject(dto, new ValidationContext(dto)); 
+        var command = await ctx.Commands.FirstAsync(c => c.Id == dto.CommandId);
+        command.Action = dto.Action; // "start", "stop", "setInterval", "setPitch"""
+        command.IntervalSeconds = dto.IntervalSeconds; // Only for "setInterval"
+        command.PitchAngle = dto.PitchAngle; // Only for "setPitchAngle"
+        command.Reason = dto.Reason; // Only for "stop"
+        await ctx.SaveChangesAsync();
+        return new CommandDto(command);
 
-    public Task<CommandDto> DeleteCommand(string id)
+    }
+    
+    public async Task<CommandDto> DeleteCommand(string id)
     {
-        throw new NotImplementedException();
+        var command = await ctx.Commands.FirstAsync(c => c.Id == id);
+        ctx.Commands.Remove(command);
+        await ctx.SaveChangesAsync();
+        return new CommandDto(command);
     }
 }

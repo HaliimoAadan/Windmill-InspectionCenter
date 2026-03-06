@@ -1015,8 +1015,29 @@
       "CreateCommandRequestDto": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "turbineId"
+        ],
         "properties": {
           "action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "intervalSeconds": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pitchAngle": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "turbineId": {
             "type": "string",
             "minLength": 1
           }
@@ -1149,6 +1170,10 @@
             "minLength": 1
           },
           "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "turbineId": {
             "type": "string",
             "minLength": 1
           }

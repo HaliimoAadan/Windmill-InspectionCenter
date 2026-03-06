@@ -9,6 +9,7 @@ public partial class Telemetry
 
     public string TurbineId { get; set; } = null!;
 
+    public string FarmId { get; set; } = null!;
     public DateTime Timestamp { get; set; }
 
     public float? WindSpeed { get; set; }
@@ -32,6 +33,8 @@ public partial class Telemetry
     public float? Vibration { get; set; }
 
     public string? Status { get; set; }
+
+    public virtual Farm Farm { get; set; } = null!;
 
     public virtual Turbine Turbine { get; set; } = null!;
 }

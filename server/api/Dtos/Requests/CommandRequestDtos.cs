@@ -6,6 +6,13 @@ public record CreateCommandRequestDto
 {
     [MinLength(1)]
     public string Action { get; set; }
+    public int? IntervalSeconds { get; set; }
+    public float? PitchAngle { get; set; }
+    public string? Reason { get; set; }
+    [Required] [MinLength(1)]
+    public string TurbineId { get; set; } 
+    [Required] [MinLength(1)]
+    public string OperatorId { get; set; }
 }
 
 public record UpdateCommandRequestDto
@@ -17,4 +24,8 @@ public record UpdateCommandRequestDto
     public int? IntervalSeconds { get; set; }
     public float? PitchAngle { get; set; }
     public string? Reason { get; set; }
+    [Required] [MinLength(1)]
+    public string TurbineId { get; set; }
+    [Required] [MinLength(1)]
+    public string OperatorId { get; set; }
 }

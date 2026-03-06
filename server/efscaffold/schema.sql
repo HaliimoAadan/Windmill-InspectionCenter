@@ -15,6 +15,7 @@ create table windmill_inspection_center.turbine(
 create table windmill_inspection_center.telemetry(
     id text primary key,
     turbine_id text not null references windmill_inspection_center.turbine(id),
+    farm_id text not null references windmill_inspection_center.turbine(farm_id),
     timestamp timestamptz not null,
 
     wind_speed real,

@@ -1226,6 +1226,10 @@ export interface CommandDto {
 
 export interface CreateCommandRequestDto {
     action?: string;
+    intervalSeconds?: number | undefined;
+    pitchAngle?: number | undefined;
+    reason?: string | undefined;
+    turbineId: string;
 }
 
 export interface UpdateCommandRequestDto {
@@ -1268,6 +1272,7 @@ export interface AlertDto {
 export interface CreateAlertRequestDto {
     severity?: string;
     message?: string;
+    turbineId?: string;
 }
 
 export interface UpdateAlertRequestDto {
